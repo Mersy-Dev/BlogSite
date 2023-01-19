@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="Account Dashboard.css"> -->
+    <title>Document</title>
+</head>
+<style>
+    *{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: slateblue;
+}
+
+.rounder{
+    width: 1190px;
+    height: 685px;
+    border: 1px solid blue;
+    margin: 0px 60px;
+}
+
+.nav{
+    width: 1190px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    /* position: fixed; */
+
+}
+
+h1{
+    color: yellow;
+    margin: 10px 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodi{
+    display: flex;
+    background-color: whitesmoke;
+
+}
+
+.sidebar{
+    width: 250px;
+    height: 630px;
+    border: 1px solid gray;
+
+}
+.bdy{
+    width: 940px;
+    height: 630px;
+    background-color: brown;
+    border: 1px solid red;
+
+}
+
+.imgdv{
+    width: 200px;
+    height: 180px;
+    margin: 15px 20px;
+    border-radius: 100%;
+    background-color: burlywood;
+}
+
+h5{
+    margin-left: 90px;
+    
+}
+
+.sidedv{
+    margin-top: 50px;
+
+}
+.side{
+    width: 230px;
+    height: 25px;
+    border: 1px solid gray;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 900;
+    
+    /* border-right: none;
+    border-left: none;
+    border-bottom: none; */
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.side:hover{
+    background-color: darkgrey;
+    color: white;
+}
+a:hover{
+    background-color: darkgrey;
+    color: white;
+}
+
+
+
+/* POST BLOG SITE */
+
+#aur{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 20px 30px;
+
+}
+.aurr{
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    margin: 20px 30px;
+
+}
+
+ #tit{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 5px 30px;
+
+}
+.titt{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px 30px;
+    display: block;
+
+}
+ #blo{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 5px 30px;
+
+
+
+}
+.bloo{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 30px;
+    display: block;
+
+
+}
+
+#show{
+    color: black;
+}
+
+.cont{
+  width: 80%;
+  background-color: white;
+}
+
+#but{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    margin-top: 80px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+
+}
+
+.inp{
+
+}
+h2{
+  font-size: 30px;
+  color: white;
+  margin: 10px 20px;
+}
+
+.dp{
+    display: flex;
+}
+</style>
+<body>
+    <main>
+        <div class="rounder">
+                <nav class="nav">
+                    <div><h1>ADMIN PANEL</h1></div>
+                    <div><button></button></div>
+                </nav>
+    
+                <div class="bodi">
+                    <div class="sidebar">
+                        <div class="imgdv">
+                            <img class="img" src="" alt="">
+                        </div>
+                        <h5>John Doe</h5>
+        
+                        <div class="sidedv">
+                            <div class="side">Dashboard</div>
+                            <div class="side"> <a href="Posted Blog.html"></a> Post Blogs</div>
+                            <div class="side">Liked Blogs</div>
+                            <div class="side" onclick="logout()">Logout</div>
+                            <!-- <button ></button> -->
+
+        
+        
+                            
+                        </div>
+                    </div>
+        
+                    <div class="bdy">
+                        <div id="sho">
+                            <div class="dp">
+                              <div class="inp">
+                                <input type="text" name="" id="aur" placeholder="Author's name"> <br>
+                                <input type="text" name="" id="tit" placeholder="blog title"> <br>
+                                <input type="text" name="" id="blo" placeholder="blog">
+                            </div>
+                
+                            <button id="but"  onclick="addInputValues()">
+                          ADD
+                            </button>
+                
+                            </div>
+                
+                
+                            <div>
+                              <h2>SITE PROFILE CONTENT</h2>
+                              <div id="list"></div>
+                            </div>
+                              <!-- <div class="spinner-border text-dark" role="status">
+                                <span class="visually-hidden"></span>
+                              </div> -->
+                
+                              <div id="show"></div>
+                              <span></span>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </main>
+</body>
+</html>
+
+<script>
+ 
+
+     // get the current user from the local storage
+     let currentUser = JSON.parse(localStorage.getItem('current_user'))
+    
+    // check if the current user is null or undefined
+    console.log(currentUser);
+    if(!currentUser){
+        // if current user dosent exist then redirect back to login page
+        window.location.href = 'login.html'
+    }
+    // welcome.innerHTML = "Welcome to your Dashboard" + " " + currentUser.username
+    function logout(){
+        let details = JSON.parse(localStorage.getItem('loggedUser'));
+        let currentUsers = details
+        // you dont need to set loggedUser again...just remove the current user from local storage 
+        // localStorage.setItem("loggedUser", JSON.stringify(currentUsers))
+        localStorage.removeItem("current_user")
+        window.location.href = 'login.html'
+    }
+
+    
+  let site = [];
+  let aur = document.getElementById("aur");
+  let tit = document.getElementById("tit");
+  let blo = document.getElementById("blo");
+  // let screen = document.getElementById("show");
+  let collection = {
+    aur: aur.value,
+    tit: tit.value,
+    blo: blo.value,
+  };
+
+
+  function reuseAble() {
+    screen.innerHTML = "";
+    for (let index = 0; index < site.length; index++) {
+      const element = site[index];
+      console.log(element);
+
+      screen.innerHTML += `
+                <div class ="cont">
+                
+                    <span class="aurr">${element.aur}</span>
+                     <span class="titt">${element.tit}</span>
+                     <span class="bloo">${element.blo}</span>
+                     <button onclick = "removeObject(${index})">remove</button>
+
+                </div>
+                `;
+    }
+  }
+  const addInputValues = () => {
+    // get the values after you click on the button
+    const aur_value = aur.value;
+    const tit_value = tit.value;
+    const blo_value = blo.value;
+
+    //   store the value inside a single object
+
+    let collection = {
+      aur: aur_value,
+      tit: tit_value,
+      blo: blo_value,
+    };
+
+    // push the object inside the array
+    site.push(collection);
+    reuseAble()
+    localStorage.setItem("myBlog", JSON.stringify(site));
+    window.location.href = "Posted Blog.html"
+    console.log(site);
+  };
+//    <button onclick = "removeObject('${element}', '${index}')">remove</button>
+
+  const removeObject = (index) => {
+    // console.log("element is below");
+        console.log(index);
+        site.splice(index, 1)
+        reuseAble()
+
+
+    for (let index = 0; index < site.length; index++) {
+      const element = site[index];
+      console.log(element);
+
+      screen.innerHTML += `
+                <div class ="cont">
+                  <span class="aurr">${element.aur}</span>
+                     <span class="titt">${element.tit}</span>
+                     <span class="bloo">${element.blo}</span>
+                     <button onclick = "removeObject(${index})">remove</button>
+
+                </div>
+                `;
+    }
+
+    console.log("index of element is " + index);
+
+
+    // so you reove the object from the array based on its index
+
+    // after that you now loop through the array again and show it in the browser
+  };
+</script>
+
+<!-- // after pushing in the array you now need to
+// loop the array again so that the recent values can be displayed in the browser
+
+////// c
+//     screen.innerHTML = "";
+//     for (let index = 0; index < site.length; index++) {
+//       const element = site[index];
+//       console.log(element);
+
+//       screen.innerHTML += `
+//                 <div class ="cont">
+            
+//                     <span class="aurr">${element.aur}</span>
+//                      <span class="titt">${element.tit}</span>
+//                      <span class="bloo">${element.blo}</span>
+//                      <button onclick = "removeObject(${index})">remove</button>
+
+//                 </div>
+//                 `;
+//     } -->

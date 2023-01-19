@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .frame{
+        width: 210px;
+        height: 300px;
+        border-radius: 10px;
+        border: 1px solid lightgrey;
+        margin: 20px auto;
+        position: relative;
+    }
+
+    .frame button{
+        width: 31%;
+    }
+    #networkProvider{
+            position: absolute;
+            top: 50%;
+            width: 80%;
+            left: 10%;
+            border: 1px solid gray;
+            box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.5);
+    }
+</style>
+<body>
+    <main>
+        <div class="frame">
+            <h1 id="screen"></h1>
+            <button onclick="num(1)">1</button>
+            <button onclick="num(2)">2</button>
+            <button onclick="num(3)">3</button>
+            <button onclick="num(4)">4</button>
+            <button onclick="num(5)">5</button>
+            <button onclick="num(6)">6</button>
+            <button onclick="num(7)">7</button>
+            <button onclick="num(8)">8</button>
+            <button onclick="num(9)">9</button>
+            <button onclick="num(0)">0</button>
+            <button onclick="num('*')">*</button>
+            <button onclick="num('#')">#</button>
+            <button onclick="call()">#</button>
+
+            <div id="networkProvider">
+                <div>
+                    <button onclick="mtn()"></button>
+                </div>
+                <div>
+                    <button>Glo</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </main>
+    
+</body>
+</html>
+<script>
+    let screen = document.getElementById("screen")
+    networkProvider.style.display = "none"
+    function num(number){
+        document.getElementById("screen").value += number
+        // console.log(number);
+        console.log(screen.innerHTML);
+        console.log(screen.innerHTML == "");
+        if (screen.value == ""){
+            return;
+        }else{
+            networkProvider.style.display = "block"
+        }
+        
+
+    }
+    
+    function mtn(){
+        if(!screen.value.startsWith("*555*")){
+            networkProvider.innerHTML  = "code error"
+        }else{
+            alert("Recharge Successful")
+        }
+    }
+    function call(){
+        console.log(screen.innerHTML)
+    }
+</script>

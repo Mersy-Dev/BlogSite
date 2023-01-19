@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="Account Dashboard.css"> -->
+    <title>Document</title>
+</head>
+<style>
+    *{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: slateblue;
+}
+
+.rounder{
+    width: 1190px;
+    height: 685px;
+    border: 1px solid blue;
+    margin: 0px 60px;
+}
+
+.nav{
+    width: 1190px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    /* position: fixed; */
+
+}
+
+h1{
+    color: yellow;
+    margin: 10px 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodi{
+    display: flex;
+    background-color: whitesmoke;
+
+}
+
+.sidebar{
+    width: 250px;
+    height: 630px;
+    border: 1px solid gray;
+
+}
+.bdy{
+    width: 940px;
+    height: 630px;
+    background-color: brown;
+    border: 1px solid red;
+
+}
+
+.imgdv{
+    width: 200px;
+    height: 180px;
+    margin: 15px 20px;
+    border-radius: 100%;
+    background-color: burlywood;
+}
+
+h5{
+    margin-left: 90px;
+    
+}
+
+.sidedv{
+    margin-top: 50px;
+
+}
+.side{
+    width: 200px;
+    height: 30px;
+    border: 1px solid gray;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+}
+
+
+
+/* POST BLOG SITE */
+
+#aur{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 20px 30px;
+
+}
+.aurr{
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    margin: 20px 30px;
+
+}
+
+ #tit{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 5px 30px;
+
+}
+.titt{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px 30px;
+    display: block;
+
+}
+ #blo{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: blueviolet;
+    margin: 5px 30px;
+
+
+
+}
+.bloo{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 30px;
+    display: block;
+
+
+}
+
+#show{
+    color: black;
+}
+
+.cont{
+  width: 80%;
+  background-color: white;
+}
+
+#but{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    margin-top: 80px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+
+}
+
+.inp{
+
+}
+h2{
+  font-size: 30px;
+  color: white;
+  margin: 10px 20px;
+}
+
+.dp{
+    display: flex;
+}
+
+</style>
+<body>
+    <main>
+        <div class="rounder">
+                <nav class="nav">
+                    <div><h1>ADMIN PANEL</h1></div>
+                    <div><button></button></div>
+                </nav>
+    
+                <div class="bodi">
+                    <div class="sidebar">
+                        <div class="imgdv">
+                            <img class="img" src="" alt="">
+                        </div>
+                        <h5>John Doe</h5>
+        
+                        <div class="sidedv">
+                            <div class="side">dashboard</div>
+                            <div class="side"><a href=""></a></div>
+                            <div class="side"><a href="">Post Blogs</a></div>
+                            <div class="side"><a href="">Liked Blogs</a></div>
+                            <div class="side"><a href="">login</a></div>
+        
+        
+                            
+                        </div>
+                    </div>
+        
+                    <div class="bdy">
+                                <div id="sho">
+            <div class="dp">
+              <div class="inp">
+                <input type="text" name="" id="aur" placeholder="Author's name"> <br>
+                <input type="text" name="" id="tit" placeholder="blog title"> <br>
+                <input type="text" name="" id="blo" placeholder="blog">
+            </div>
+
+            <button id="but"  onclick="addInputValues()">
+          ADD
+        </button>
+
+            </div>
+
+
+            <div>
+              <h2>SITE PROFILE CONTENT</h2>
+              <div id="list"></div>
+            </div>
+              <!-- <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden"></span>
+              </div> -->
+
+              <div id="show"></div>
+              <span></span>
+      </div>
+                    </div>
+                </div>
+    
+            </div>
+        </main>
+
+        <button onclick="logout()">Logout</button>
+    </main>
+</body>
+</html>
+
+<script>
+
+    // get the current user from the local storage
+    let currentUser = JSON.parse(localStorage.getItem('current_user'))
+    
+    // check if the current user is null or undefined
+    console.log(currentUser);
+    if(!currentUser){
+        // if current user dosent exist then redirect back to login page
+        window.location.href = 'login.html'
+    }
+    welcome.innerHTML = "Welcome to your Dashboard" + " " + currentUser.username
+    function logout(){
+        let details = JSON.parse(localStorage.getItem('loggedUser'));
+        let currentUsers = details
+        // you dont need to set loggedUser again...just remove the current user from local storage 
+        // localStorage.setItem("loggedUser", JSON.stringify(currentUsers))
+        localStorage.removeItem("current_user")
+        window.location.href = 'login.html'
+    }
+</script>

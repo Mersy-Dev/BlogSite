@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input onkeypress="showValue()" type="text" id="things">
+    <h1 id="dispName"></h1>
+</body>
+</html>
+
+<script>
+    let name  = ["Daniel","Candid", "AnuoluwaPlenty",  "Tunde" ]
+
+    function showNames(){
+        name.forEach(element => {
+            dispName.innerHTML += element + "<br>"
+            
+        });
+    }
+
+    function add (callback){
+        setTimeout(() => {
+            name.push("ola")
+            callback()
+            
+        }, 5000);
+        console.log(name);
+    }
+
+    add(showNames)
+
+    fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((data)=> {
+        console.log(data);
+    })
+</script>
