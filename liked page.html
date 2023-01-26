@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POSTED BLOG</title>
+    <title>Document</title>
 </head>
-
 <style>
     body{
         background-color: slateblue;
@@ -181,7 +180,7 @@ a{
                     <div class="sidedv">
                         <div class="side"><a href="Account Dashboard.html">Dashboard</a> </div>
                         <div class="side"> <a href="Posted Blog.html">Post Blogs</a></div>
-                        <div class="side">Liked Blogs</div>
+                        <div class="side"><a href="">Liked Blogs</a> </div>
                         <div class="side" onclick="logout()">Logout</div>
                         <!-- <button ></button> -->
                         
@@ -194,109 +193,40 @@ a{
                 </div>
             </div>
         </div>
-        <h1>welcome to the POSTED BLOG page!!!</h1>
-        
-        
-
     </main>
 </body>
 </html>
 <script>
+    // let Like_blog = JSON.parse(localStorage.getItem("blog"))
+    // function likee(element, index){
+    //     let found = site.find((something) => something == element)
+    //     if(found){
+    //             //looping through the liked array to compare
+    //             site.forEach((dan, num) => {
+    //                 console.log(found == dan);
+    //                 if(found == dan){
+    //                     site.splice(num, 1)
+    //                     btnColor[index].style.backgroundColor = "blue";
+    //                     btnColor[index].innerHTML = "L"
+    //                     localStorage.setItem("blog", JSON.stringify(site))
+    //                     window.location.href = "liked page.html"
 
-    let newPost = []
-    let cont = document.getElementById("show")
-    let items = JSON.parse(localStorage.getItem("blog"))
-    console.log(items);
-    let screen = document.getElementById("show")
-
-   
-
-
-    function addNow(){
-        for (let index = 0; index < items.length; index++) {
-        const element = items[index];
-        screen.innerHTML += `
-            <div class ="cont">
-                <span class="aurr">${element.aur}</span> <br>
-                <span class="titt">${element.tit}</span> <br>
-                <span class="bloo">${element.blo}</span>
-                <button onclick = "removeObject(${index})">remove</button>
-                <button  class= 'color'  onclick = "likee('${element}', ${index})">Like</button>
-                
-            </div>
-            `  
-        }
-      
-
-    }
-
-    addNow()
-
-    let btnColor = document.querySelectorAll(".color")
-    // let myArray  = gotten;
-    let site = [] 
-
-    function likee(element, index){
-        let found = site.find((something) => something == element)
-        if(found){
-                //looping through the liked array to compare
-                site.forEach((dan, num) => {
-                    console.log(found == dan);
-                    if(found == dan){
-                        site.splice(num, 1)
-                        btnColor[index].style.backgroundColor = "blue";
-                        btnColor[index].innerHTML = "L"
-                        // localStorage.setItem("blog", JSON.stringify(site))
-                        // window.location.href = "liked page.html"
-
-                    }
+    //                 }
                     
-                });
+    //             });
                 
-            }else{
-                site.push(element)
-                // console.log(myLike)
-                // console.log(btnColor[index])
-                btnColor[index].style.backgroundColor = "red";
-                btnColor[index].innerHTML = "U"
-                // localStorage.setItem("blog", JSON.stringify(site))
-                // window.location.href = "liked page.html"
+    //         }else{
+    //             site.push(element)
+    //             // console.log(myLike)
+    //             // console.log(btnColor[index])
+    //             btnColor[index].style.backgroundColor = "red";
+    //             btnColor[index].innerHTML = "U"
+    //             localStorage.setItem("blog", JSON.stringify(site))
+    //             window.location.href = "liked page.html"
 
 
-            }
-    }
+    //         }
+    // }
 
 
-
-    const removeObject = (index) => {
-    // console.log("element is below");
-        console.log(index);
-        site.splice(index, 1)
-        reuseAble()
-
-
-    for (let index = 0; index < site.length; index++) {
-      const element = site[index];
-      console.log(element);
-
-      screen.innerHTML += `
-                <div class ="cont">
-                  <span class="aurr">${element.aur}</span>
-                     <span class="titt">${element.tit}</span>
-                     <span class="bloo">${element.blo}</span>
-                     <button onclick = "removeObject(${index})">remove</button>
-
-                </div>
-                `;
-    }
-
-    console.log("index of element is " + index);
-
-
-    // so you reove the object from the array based on its index
-
-    // after that you now loop through the array again and show it in the browser
-  };
-    // removeObject()
 </script>
-

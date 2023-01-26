@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
         <title>Document</title>
     </head>
     <body>
@@ -73,10 +75,95 @@
                     dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             </form>
         </main>
+
+        <!-- <main>
+            <form action="">
+                <div class="mb-6">
+                    <label for="text" class="block mb-2 text-sm font-medium
+                        text-gray-900 dark:text-white">Author</label>
+                    <input type="text" id="text" class="bg-gray-50 border
+                        border-gray-300 text-gray-900 text-sm rounded-lg
+                        focus:ring-blue-500 focus:border-blue-500 block w-full
+                        p-2.5 dark:bg-gray-700 dark:border-gray-600
+                        dark:placeholder-gray-400 dark:text-white
+                        dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Dani Dev" >
+                </div>
+                <div class="mb-6">
+                    <label for="text" class="block mb-2 text-sm font-medium
+                        text-gray-900 dark:text-white">title</label>
+                    <input type="text" id="text2" class="bg-gray-50 border
+                        border-gray-300 text-gray-900 text-sm rounded-lg
+                        focus:ring-blue-500 focus:border-blue-500 block w-full
+                        p-2.5 dark:bg-gray-700 dark:border-gray-600
+                        dark:placeholder-gray-400 dark:text-white
+                        dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="name@flowbite.com" >
+                </div>
+                <div class="mb-6">
+                    <label for="text" class="block mb-2 text-sm font-medium
+                        text-gray-900 dark:text-white">Your blog</label>
+                    <input type="text" id="text3" class="bg-gray-50
+                        border border-gray-300 text-gray-900 text-sm rounded-lg
+                        focus:ring-blue-500 focus:border-blue-500 block w-full
+                        p-2.5 dark:bg-gray-700 dark:border-gray-600
+                        dark:placeholder-gray-400 dark:text-white
+                        dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        >
+                </div>
+            
+                <button onclick="addBt(event)" type="submit" class="text-white bg-blue-700
+                    hover:bg-blue-800 focus:ring-4 focus:outline-none
+                    focus:ring-blue-300 font-medium rounded-lg text-sm w-full
+                    sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600
+                    dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+            </form>
+            </form>
+        </main> -->
     </body>
 </html>
 
+<!-- <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCYo9YMKSa-3MQHXHM1kCrQF34rCaAxubg",
+      authDomain: "blog-projecft.firebaseapp.com",
+      projectId: "blog-projecft",
+      storageBucket: "blog-projecft.appspot.com",
+      messagingSenderId: "257285906332",
+      appId: "1:257285906332:web:b4f7c0136e9a1596d13259"
+    };
+  
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore()
+
+
+    let text = document.getElementById("text")
+    let text2 = document.getElementById("text2")
+    let text3 = document.getElementById("text3")
+
+    function addBt(ev){
+        ev.preventDefault()
+            let data = {
+            author: text.value,
+            title: text2.value,
+            blog:  text3.value 
+    }
+    console.log(data);
+    db.collection("blog").doc().set(data).then(()=>{
+        console.log("Data has been sent")
+    }).catch(()=>{
+        console.log("something went wrong")
+    })
+
+}
+
+    // blog.innerHTML = data.blog
+
+  </script> -->
+
 <script>
+
 
     let checkboxx = document.getElementById('remember')
     function signUp(event){
@@ -110,3 +197,4 @@
     
 
 </script>
+

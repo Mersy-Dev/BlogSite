@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <input id="author" type="text" name="" >
+        <input id="title" type="title" name="" >
+        <textarea name="" id="post" cols="30" rows="10"></textarea>
+        <button onclick="add()">Add</button>
+    </main>
+</body>
+</html>
+
+<script>
+    let gotten = JSON.parse(localStorage.getItem("blog"))
+    let author = document.getElementById("author")
+    let title = document.getElementById("title")
+    let post = document.getElementById("post")
+    function add(){
+        let data  = {
+            author: author.value,
+            title: title.value,
+            post: post.value
+
+        }
+        if(gotten == null){
+            gotten = []
+            gotten.push(data)
+            localStorage.setItem("blog", JSON.stringify(gotten))
+            window.location.href = "seeBlog.html"
+
+        }else{
+            gotten.push(data)
+            localStorage.setItem("blog", JSON.stringify(gotten))
+            window.location.href = "seeBlog.html"
+
+
+        }
+       
+    }
+    let Names = {
+        fname: "",
+        lname: "",
+        bothNames : () =>{
+            both_names = Names.fname + Names.lname
+            alert(both_names)
+        }
+    }
+     Names.fname = "Daniel"
+    Names.lname = "Developer"
+    console.log(Names.bothNames());
+
+    function testIt(){
+        Names.lname = "Sam"
+        console.log(Names.bothNames());
+        console.log(Names.lname);
+
+    }
+    // testIt()
+
+
+</script>

@@ -203,9 +203,9 @@ h2{
                         <h5>John Doe</h5>
         
                         <div class="sidedv">
-                            <div class="side"><a href="Account Dashboard.html"></a> Dashboard</div>
+                            <div class="side">Dashboard</div>
                             <div class="side"> <a href="Posted Blog.html"></a> Post Blogs</div>
-                            <div class="side"><a href="liked page.html"></a> Liked Blogs</div>
+                            <div class="side">Liked Blogs</div>
                             <div class="side" onclick="logout()">Logout</div>
                             <!-- <button ></button> -->
 
@@ -254,15 +254,10 @@ h2{
 <script>
  
 
-     // get the current user from the local storage
-     let currentUser = JSON.parse(localStorage.getItem('current_user'))
-    
-    // check if the current user is null or undefined
-    console.log(currentUser);
-    if(!currentUser){
-        // if current user dosent exist then redirect back to login page
-        window.location.href = 'login.html'
-    }
+
+    // ALWAYS DEFINE YOUR FUNCTIONS FIRST BEFORE WRITING ANY OTHER JAVASCRIPT CODE
+
+    // LOGOUT FUNCTION
     // welcome.innerHTML = "Welcome to your Dashboard" + " " + currentUser.username
     function logout(){
         let details = JSON.parse(localStorage.getItem('loggedUser'));
@@ -273,26 +268,13 @@ h2{
         window.location.href = 'login.html'
     }
 
-    
-  let site = [];
 
-  let aur = document.getElementById("aur");
-  let tit = document.getElementById("tit");
-  let blo = document.getElementById("blo");
-  // let screen = document.getElementById("show");
-  let collection = {
-    aur: aur.value,
-    tit: tit.value,
-    blo: blo.value,
-  };
-
-
-  function reuseAble() {
+    // REUSABLE FUNCTION
+    function reuseAble() {
     screen.innerHTML = "";
     for (let index = 0; index < site.length; index++) {
       const element = site[index];
       console.log(element);
-
       screen.innerHTML += `
                 <div class ="cont">
                 
@@ -300,16 +282,13 @@ h2{
                      <span class="titt">${element.tit}</span>
                      <span class="bloo">${element.blo}</span>
                      <button onclick = "removeObject(${index})">remove</button>
-                  
-
-
                 </div>
                 `;
     }
   }
 
-  let gotten = JSON.parse(localStorage.getItem("blog"))
-  
+
+    // ADD POST FUNCTION
   const addInputValues = () => {
     // get the values after you click on the button
     const aur_value = aur.value;
@@ -317,48 +296,63 @@ h2{
     const blo_value = blo.value;
 
     //   store the value inside a single object
-
     let collection = {
       aur: aur_value,
       tit: tit_value,
       blo: blo_value,
     };
 
-    if(gotten == null){
-            gotten = []
-            gotten.push(collection)
-            localStorage.setItem("blog", JSON.stringify(gotten))
-            window.location.href = "Posted Blog.html"
-
-        }else{
-            gotten.push(collection)
-            localStorage.setItem("blog", JSON.stringify(gotten))
-            window.location.href = "Posted Blog.html"
-
-
-        }
-
-
+    // 
     // push the object inside the array
-    // site.push(collection);
-    // reuseAble()
-    // localStorage.setItem("myBlog", JSON.stringify(site));
-    // window.location.href = "Posted Blog.html"
-    // console.log(site);
-  };
-//    <button onclick = "removeObject('${element}', '${index}')"> remove</button>
+    // site.push(collection);//// This is wrong !!!!!!!!!!!!!!!!!!!!!!!
 
+     // get the current list of posts from  local storage
+     let allBlogs = JSON.parse(localStorage.getItem('myBlog'));
+
+    //  check wether the allBlogs has data inside it or not
+     if(!allBlogs){
+        // all blogs does not have any data....meaning that
+        // no blog exist in local storage
+
+        // so you have two options eiher you create a new variable array
+        // or you initialize the allBlogs to a new array
+
+        // method one
+        allBlogs = []; ////this initializes the allBlogs into a new array
+
+      // method two
+      //  let blogsArray = []; /// this creates a new array using another variable name.
+
+    //   NEXT you push the object into the array
+    allBlogs.push(collection);
+
+    // save the array to localstorage
+    localStorage.setItem("myBlog", JSON.stringify(allBlogs));
+    //window.location.href = "Posted Blogg.html"
+    // console.log(site);
+     }else{
+
+    // Just push the object into the allBlogs array...cos it has data inside it
+    allBlogs.push(collection);
+
+    // save the array to localstorage
+    localStorage.setItem("myBlog", JSON.stringify(allBlogs));
+
+     }
+   
+  };
+
+
+
+  //  REMOVE POST FUNCTION
   const removeObject = (index) => {
-    // console.log("element is below");
         console.log(index);
         site.splice(index, 1)
         reuseAble()
 
-
     for (let index = 0; index < site.length; index++) {
       const element = site[index];
       console.log(element);
-
       screen.innerHTML += `
                 <div class ="cont">
                   <span class="aurr">${element.aur}</span>
@@ -371,12 +365,36 @@ h2{
     }
 
     console.log("index of element is " + index);
-
-
     // so you reove the object from the array based on its index
-
     // after that you now loop through the array again and show it in the browser
   };
+
+
+
+
+
+
+  
+//   GET THE CURRENT USER AND CHECK IF USER IS LOGGED IN
+// THIS WILL RUN AUTOMATICALLY WHEN THE SCRIPT STARTS LOADING
+    // get the current user from the local storage
+    let currentUser = JSON.parse(localStorage.getItem('current_user'))
+    
+    // check if the current user is null or undefined
+    console.log(currentUser);
+    if(!currentUser){
+        // if current user dosent exist then redirect back to login page
+        window.location.href = 'login.html'
+    }
+
+
+ 
+
+
+  
+
+
+
 </script>
 
 <!-- // after pushing in the array you now need to
